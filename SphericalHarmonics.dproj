@@ -327,11 +327,12 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Core.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALPs\LUX.ALFs.N8.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALPs\LUX.ALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALPs\LUX.ALFs.Simple.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALPs\LUX.FNALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALPs\LUX.NALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Simple.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Simple.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

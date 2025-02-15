@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Spherical Harmonics'
   ClientHeight = 578
-  ClientWidth = 662
+  ClientWidth = 692
   Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -14,7 +14,7 @@ object Form1: TForm1
   object Panel1: TPanel
     Align = Right
     Margins.Left = -10.000000000000000000
-    Position.X = 542.000000000000000000
+    Position.X = 572.000000000000000000
     Size.Width = 120.000000000000000000
     Size.Height = 578.000000000000000000
     Size.PlatformDefault = False
@@ -50,7 +50,8 @@ object Form1: TForm1
     object ComboBox1: TComboBox
       Items.Strings = (
         'TALFsN8'
-        'TALFsSimple')
+        'TALFsSimple'
+        'TNALFsSimple')
       ItemIndex = 0
       Position.X = 10.000000000000000000
       Position.Y = 70.000000000000000000
@@ -67,16 +68,16 @@ object Form1: TForm1
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
-    Size.Width = 532.000000000000000000
+    Size.Width = 562.000000000000000000
     Size.Height = 558.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 1
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
+      562s
       532s
-      532s
-      532s
+      562s
       532s)
     object TabItem1: TTabItem
       CustomIcon = <
@@ -98,9 +99,12 @@ object Form1: TForm1
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Size.Width = 512.000000000000000000
+        Size.Width = 542.000000000000000000
         Size.Height = 512.000000000000000000
         Size.PlatformDefault = False
+        inherited Viewport3D1: TViewport3D
+          Size.Width = 542.000000000000000000
+        end
       end
     end
     object TabItem2: TTabItem
@@ -126,7 +130,7 @@ object Form1: TForm1
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Position.X = 502.000000000000000000
+        Position.X = 532.000000000000000000
         Position.Y = 10.000000000000000000
         Size.Width = 20.000000000000000000
         Size.Height = 512.000000000000000000
@@ -141,7 +145,7 @@ object Form1: TForm1
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Size.Width = 482.000000000000000000
+        Size.Width = 512.000000000000000000
         Size.Height = 512.000000000000000000
         Size.PlatformDefault = False
       end

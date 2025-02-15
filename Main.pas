@@ -6,13 +6,14 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   System.Generics.Collections,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Controls.Presentation, FMX.TabControl,
+  FMX.Controls.Presentation, FMX.TabControl, FMX.ListBox,
   Viewer, ViewerALFs,
   LUX.ALFs,
   LUX.ALFs.N8,
   LUX.ALFs.Simple,
   LUX.NALFs,
-  LUX.FNALFs, FMX.ListBox;
+  LUX.NALFs.Simple,
+  LUX.FNALFs;
 
 type
   TForm1 = class(TForm)
@@ -52,6 +53,7 @@ begin
 
      _NALFs.Add( TALFsToNALFs<TALFsN8    >.Create );
      _NALFs.Add( TALFsToNALFs<TALFsSimple>.Create );
+     _NALFs.Add( TNALFsSimple             .Create );
 
      ComboBox1Change( Sender );
 end;

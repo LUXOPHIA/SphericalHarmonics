@@ -71,8 +71,6 @@ procedure TViewerALFsFrame.Paint;
 begin
      inherited;
 
-     //Canvas.Clear( TAlphaColors.Gray );
-
      if not Assigned( _NALFs ) then Exit;
 
      if upNALFs then
