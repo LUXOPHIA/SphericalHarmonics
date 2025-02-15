@@ -10,9 +10,10 @@ uses
   Viewer, ViewerALFs,
   LUX.ALFs,
   LUX.ALFs.N8,
-  LUX.ALFs.Simple,
+  LUX.ALFs.Standard,
   LUX.NALFs,
-  LUX.NALFs.Simple,
+  LUX.NALFs.Standard,
+  LUX.NALFs.Enomoto,
   LUX.FNALFs;
 
 type
@@ -51,9 +52,10 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
      _NALFs := TObjectList<TNALFs>.Create;
 
-     _NALFs.Add( TALFsToNALFs<TALFsN8    >.Create );
-     _NALFs.Add( TALFsToNALFs<TALFsSimple>.Create );
-     _NALFs.Add( TNALFsSimple             .Create );
+     _NALFs.Add( TALFsToNALFs<TALFsN8      >.Create );
+     _NALFs.Add( TALFsToNALFs<TALFsStandard>.Create );
+     _NALFs.Add( TNALFsStandard             .Create );
+     _NALFs.Add( TNALFsEnomoto              .Create );
 
      ComboBox1Change( Sender );
 end;

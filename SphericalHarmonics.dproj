@@ -310,6 +310,12 @@
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Color\LUX.Color.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.FMX.Graphics.D3\LUX.FMX.Graphics.D3.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.FMX.Graphics.D3\LUX.FMX.Graphics.D3.Shaper.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Standard.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Standard.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FMX\LUX.SH.FMX.pas"/>
         <DCCReference Include="Viewer.pas">
@@ -327,12 +333,7 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Core.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Simple.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Simple.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Enomoto.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

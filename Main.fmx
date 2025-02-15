@@ -50,8 +50,9 @@ object Form1: TForm1
     object ComboBox1: TComboBox
       Items.Strings = (
         'TALFsN8'
-        'TALFsSimple'
-        'TNALFsSimple')
+        'TALFsStandard'
+        'TNALFsStandard'
+        'TNALFsEnomoto')
       ItemIndex = 0
       Position.X = 10.000000000000000000
       Position.Y = 70.000000000000000000
