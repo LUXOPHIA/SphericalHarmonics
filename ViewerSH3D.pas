@@ -120,6 +120,9 @@ begin
      _Light3DZ.Pose := M * TSingleM4.RotateY( DegToRad( +135 ) );
 
      _SPHarm3D := TSPHarmonics3D.Create( _World3D );
+     _SPHarm3D.Material.Ambient  := TAlphaColors.Black;
+     _SPHarm3D.Material.Diffuse  := TAlphaColors.White;
+     _SPHarm3D.Material.Specular := TAlphaColors.Null;
 end;
 
 destructor TViewerSH3DFrame.Destroy;
