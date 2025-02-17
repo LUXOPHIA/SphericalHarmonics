@@ -56,6 +56,7 @@ type
   public
     { public 宣言 }
     _NALFs :TObjectList<TNALFs>;
+    _SPHs  :TObjectList<TdSPHarmonics>;
   end;
 
 var
@@ -67,17 +68,24 @@ implementation //###############################################################
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-     ViewerSH3DFrameS.SPHarm := TdSPHarmonicsT4.Create;
+     _SPHs := TObjectList<TdSPHarmonics>.Create;
+
+     _SPHs.Add( TdSPHarmonics<TdALFsToNALFs<TdALFsN8   >>.Create );  // 0
+     _SPHs.Add( TdSPHarmonics<TdALFsToNALFs<TdALFsTerm3>>.Create );  // 1
+     _SPHs.Add( TdSPHarmonics<TdNALFsTerm3              >.Create );  // 2
+     _SPHs.Add( TdSPHarmonics<TdNALFsTerm4              >.Create );  // 3
+
+     ViewerSH3DFrameS.SPHarm := _SPHs[ 3 ];
 
      SpinBoxSNChange( Sender );
      SpinBoxSMChange( Sender );
 
      _NALFs := TObjectList<TNALFs>.Create;
 
-     _NALFs.Add( TALFsToNALFs<TALFsN8   >.Create );
-     _NALFs.Add( TALFsToNALFs<TALFsTerm3>.Create );
-     _NALFs.Add( TNALFsTerm3             .Create );
-     _NALFs.Add( TNALFsTerm4             .Create );
+     _NALFs.Add( TALFsToNALFs<TALFsN8   >.Create );  // 0
+     _NALFs.Add( TALFsToNALFs<TALFsTerm3>.Create );  // 1
+     _NALFs.Add( TNALFsTerm3             .Create );  // 2
+     _NALFs.Add( TNALFsTerm4             .Create );  // 3
 
      ComboBoxAAChange( Sender );
 end;
@@ -85,6 +93,7 @@ end;
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
      _NALFs.Free;
+     _SPHs .Free;
 end;
 
 //------------------------------------------------------------------------------
