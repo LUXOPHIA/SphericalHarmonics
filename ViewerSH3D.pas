@@ -1,4 +1,4 @@
-﻿unit Viewer;
+﻿unit ViewerSH3D;
 
 interface //#################################################################### ■
 
@@ -15,7 +15,7 @@ uses
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 T Y P E 】
 
-     TViewerFrame = class( TFrame )
+     TViewerSH3DFrame = class( TFrame )
        Viewport3D1: TViewport3D;
        procedure Viewport3D1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
        procedure Viewport3D1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Single);
@@ -29,7 +29,6 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        _Light3DX :TLight3D;
        _Light3DY :TLight3D;
        _Light3DZ :TLight3D;
-       _SPHarm3D :TSPHarmonics3D;
        ///// A C C E S S O R
        function GetSPHarm :TdSPHarmonics;
        procedure SetSPHarm( const SPHarm_:TdSPHarmonics );
@@ -38,6 +37,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        function GetM :Integer;
        procedure SetM( const M_:Integer );
      public
+       _SPHarm3D :TSPHarmonics3D;
        constructor Create( Owner_:TComponent ); override;
        destructor Destroy; override;
        ///// P R O P E R T Y
@@ -58,41 +58,41 @@ uses System.Math;
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TViewerFrame.GetSPHarm :TdSPHarmonics;
+function TViewerSH3DFrame.GetSPHarm :TdSPHarmonics;
 begin
      Result := _SPHarm3D.SPHarm;
 end;
 
-procedure TViewerFrame.SetSPHarm( const SPHarm_:TdSPHarmonics );
+procedure TViewerSH3DFrame.SetSPHarm( const SPHarm_:TdSPHarmonics );
 begin
      _SPHarm3D.SPHarm := SPHarm_;
 end;
 
 //------------------------------------------------------------------------------
 
-function TViewerFrame.GetN :Integer;
+function TViewerSH3DFrame.GetN :Integer;
 begin
      Result := _SPHarm3D.N;
 end;
 
-procedure TViewerFrame.SetN( const N_:Integer );
+procedure TViewerSH3DFrame.SetN( const N_:Integer );
 begin
      _SPHarm3D.N := N_;
 end;
 
-function TViewerFrame.GetM :Integer;
+function TViewerSH3DFrame.GetM :Integer;
 begin
      Result := _SPHarm3D.M;
 end;
 
-procedure TViewerFrame.SetM( const M_:Integer );
+procedure TViewerSH3DFrame.SetM( const M_:Integer );
 begin
      _SPHarm3D.M := M_;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-constructor TViewerFrame.Create( Owner_:TComponent );
+constructor TViewerSH3DFrame.Create( Owner_:TComponent );
 var
    M :TSingleM4;
 begin
@@ -101,6 +101,8 @@ begin
      _World3D := TF3DWorld.Create( Viewport3D1 );
 
      _Camera3D := TCamera3D.Create( _World3D );
+     _Camera3D.AngleX := DegToRad( 10 );
+     _Camera3D.AngleY := DegToRad( 45 );
 
      Viewport3D1.Camera := _Camera3D.Camera;
 
@@ -120,7 +122,7 @@ begin
      _SPHarm3D := TSPHarmonics3D.Create( _World3D );
 end;
 
-destructor TViewerFrame.Destroy;
+destructor TViewerSH3DFrame.Destroy;
 begin
 
      inherited;
@@ -128,13 +130,13 @@ end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-procedure TViewerFrame.Viewport3D1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+procedure TViewerSH3DFrame.Viewport3D1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
 begin
      _MouseS := Shift;
      _MouseP := TPointF.Create( X, Y );
 end;
 
-procedure TViewerFrame.Viewport3D1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Single);
+procedure TViewerSH3DFrame.Viewport3D1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Single);
 var
    P :TPointF;
 begin
@@ -152,7 +154,7 @@ begin
      end;
 end;
 
-procedure TViewerFrame.Viewport3D1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+procedure TViewerSH3DFrame.Viewport3D1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
 begin
      Viewport3D1MouseMove( Sender, Shift, X, Y );
 

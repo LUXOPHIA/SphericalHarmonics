@@ -38,7 +38,7 @@ uses
   LUX.FNALFs in '_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas',
   LUX.FNALFs.Diff in '_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.Diff.pas',
   LUX.SH.Diff in '_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.Diff.pas',
-  Viewer in 'Viewer.pas' {ViewerFrame: TFrame},
+  ViewerSH3D in 'ViewerSH3D.pas' {ViewerSH3DFrame: TFrame},
   ViewerALFs in 'ViewerALFs.pas' {ViewerALFsFrame: TFrame},
   Main in 'Main.pas' {Form1},
   Core in 'Core.pas';

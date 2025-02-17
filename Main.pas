@@ -6,8 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   System.Generics.Collections,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Controls.Presentation, FMX.TabControl, FMX.ListBox,
-  Viewer, ViewerALFs,
+  FMX.Controls.Presentation, FMX.TabControl, FMX.ListBox, FMX.Edit, FMX.EditBox, FMX.SpinBox,
+  ViewerSH3D, ViewerALFs,
   LUX.ALFs,
   LUX.ALFs.N8,
   LUX.ALFs.N8.Diff,
@@ -19,27 +19,32 @@ uses
   LUX.NALFs.Term3.Diff,
   LUX.NALFs.Term4,
   LUX.NALFs.Term4.Diff,
-  LUX.FNALFs,
   LUX.SH.Diff;
 
 type
   TForm1 = class(TForm)
-    ViewerFrame1: TViewerFrame;
-    Panel1: TPanel;
-      Button1: TButton;
     TabControl1: TTabControl;
-    TabItem1: TTabItem;
-    TabItem2: TTabItem;
-    ScrollBar1: TScrollBar;
-    ViewerALFsFrame1: TViewerALFsFrame;
-    ScrollBar2: TScrollBar;
-    ComboBox1: TComboBox;
+      TabItemS: TTabItem;
+        ViewerSH3DFrameS: TViewerSH3DFrame;
+        PanelS: TPanel;
+      TabItemA: TTabItem;
+        ViewerALFsFrameA: TViewerALFsFrame;
+        PanelA: TPanel;
+          LabelAA: TLabel;
+          ScrollBarAX: TScrollBar;
+            ComboBoxAA: TComboBox;
+          LabelAD: TLabel;
+            SpinBoxAD: TSpinBox;
+            ScrollBarAD: TScrollBar;
+          LabelAX: TLabel;
+            EditAX: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure ScrollBar1Change(Sender: TObject);
-    procedure ScrollBar2Change(Sender: TObject);
-    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBoxAAChange(Sender: TObject);
+    procedure SpinBoxADChange(Sender: TObject);
+    procedure ScrollBarADChange(Sender: TObject);
+    procedure EditAXChange(Sender: TObject);
+    procedure ScrollBarAXChange(Sender: TObject);
   private
     { private 宣言 }
   public
@@ -63,12 +68,12 @@ begin
      _NALFs.Add( TNALFsTerm3             .Create );
      _NALFs.Add( TNALFsTerm4             .Create );
 
-     ComboBox1Change( Sender );
+     ComboBoxAAChange( Sender );
 
-     ViewerFrame1.SPHarm := TdSPHarmonicsT4.Create( 8 );
+     ViewerSH3DFrameS.SPHarm := TdSPHarmonicsT4.Create;
 
-     ViewerFrame1.N := 8;
-     ViewerFrame1.M := 4;
+     ViewerSH3DFrameS.N := 5;
+     ViewerSH3DFrameS.M := 3;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -78,27 +83,48 @@ end;
 
 //------------------------------------------------------------------------------
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.ComboBoxAAChange(Sender: TObject);
 begin
-     /////
+     ViewerALFsFrameA.NALFs := _NALFs[ ComboBoxAA.ItemIndex ];
+
+     ScrollBarADChange( Sender );
+     ScrollBarAXChange( Sender );
 end;
 
-procedure TForm1.ComboBox1Change(Sender: TObject);
-begin
-     ViewerALFsFrame1.NALFs := _NALFs[ ComboBox1.ItemIndex ];
+//------------------------------------------------------------------------------
 
-     ScrollBar2Change( Sender );
-     ScrollBar1Change( Sender );
+procedure TForm1.SpinBoxADChange(Sender: TObject);
+begin
+     ViewerALFsFrameA.NALFs.DegN := Round( SpinBoxAD.Value );
+
+     ScrollBarAD.Value := SpinBoxAD.Value;
 end;
 
-procedure TForm1.ScrollBar1Change(Sender: TObject);
+procedure TForm1.ScrollBarADChange(Sender: TObject);
 begin
-     ViewerALFsFrame1.NALFs.X := ScrollBar1.Value;
+     ViewerALFsFrameA.NALFs.DegN := Round( ScrollBarAD.Value );
+
+     SpinBoxAD.Value := ScrollBarAD.Value;
 end;
 
-procedure TForm1.ScrollBar2Change(Sender: TObject);
+//------------------------------------------------------------------------------
+
+procedure TForm1.EditAXChange(Sender: TObject);
 begin
-     ViewerALFsFrame1.NALFs.DegN := Round( ScrollBar2.Value );
+     try
+        ViewerALFsFrameA.NALFs.X := EditAX.Text.ToDouble;
+
+        ScrollBarAX.Value := ViewerALFsFrameA.NALFs.X;
+     finally
+
+     end;
+end;
+
+procedure TForm1.ScrollBarAXChange(Sender: TObject);
+begin
+     ViewerALFsFrameA.NALFs.X := ScrollBarAX.Value;
+
+     EditAX.Text := ScrollBarAX.Value.ToString;
 end;
 
 end. //######################################################################### ■

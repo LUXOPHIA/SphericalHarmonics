@@ -333,8 +333,8 @@
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.Diff.pas"/>
-        <DCCReference Include="Viewer.pas">
-            <Form>ViewerFrame</Form>
+        <DCCReference Include="ViewerSH3D.pas">
+            <Form>ViewerSH3DFrame</Form>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="ViewerALFs.pas">

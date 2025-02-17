@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Spherical Harmonics'
   ClientHeight = 578
-  ClientWidth = 692
+  ClientWidth = 762
   Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -11,76 +11,24 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignerMasterStyle = 0
-  object Panel1: TPanel
-    Align = Right
-    Margins.Left = -10.000000000000000000
-    Position.X = 572.000000000000000000
-    Size.Width = 120.000000000000000000
-    Size.Height = 578.000000000000000000
-    Size.PlatformDefault = False
-    StyleLookup = 'pushpanel'
-    TabOrder = 0
-    object Button1: TButton
-      Position.X = 10.000000000000000000
-      Position.Y = 10.000000000000000000
-      Size.Width = 100.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 1
-      Text = 'RUN'
-      TextSettings.Trimming = None
-      OnClick = Button1Click
-    end
-    object ScrollBar2: TScrollBar
-      Max = 512.000000000000000000
-      Value = 8.000000000000000000
-      SmallChange = 0.000000000000000000
-      Orientation = Vertical
-      Margins.Top = 10.000000000000000000
-      Margins.Right = 10.000000000000000000
-      Margins.Bottom = 10.000000000000000000
-      Position.X = 10.000000000000000000
-      Position.Y = 110.000000000000000000
-      Size.Width = 20.000000000000000000
-      Size.Height = 461.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      OnChange = ScrollBar2Change
-    end
-    object ComboBox1: TComboBox
-      Items.Strings = (
-        'TALFsN8'
-        'TALFsTerm3'
-        'TNALFsTerm3'
-        'TNALFsTerm4')
-      ItemIndex = 0
-      Position.X = 10.000000000000000000
-      Position.Y = 70.000000000000000000
-      Size.Width = 100.000000000000000000
-      Size.Height = 20.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 2
-      OnChange = ComboBox1Change
-    end
-  end
   object TabControl1: TTabControl
     Align = Client
     Margins.Left = 10.000000000000000000
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
-    Size.Width = 562.000000000000000000
+    Size.Width = 742.000000000000000000
     Size.Height = 558.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 0
-    TabOrder = 1
+    TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      562s
+      742s
       532s
-      562s
+      742s
       532s)
-    object TabItem1: TTabItem
+    object TabItemS: TTabItem
       CustomIcon = <
         item
         end>
@@ -94,21 +42,31 @@ object Form1: TForm1
       Text = 'SH'
       ExplicitSize.cx = 35.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
-      inline ViewerFrame1: TViewerFrame
+      inline ViewerSH3DFrameS: TViewerSH3DFrame
         Align = Client
         Margins.Left = 10.000000000000000000
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Size.Width = 542.000000000000000000
+        Size.Width = 512.000000000000000000
         Size.Height = 512.000000000000000000
         Size.PlatformDefault = False
-        inherited Viewport3D1: TViewport3D
-          Size.Width = 542.000000000000000000
-        end
+      end
+      object PanelS: TPanel
+        Align = Right
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 532.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 200.000000000000000000
+        Size.Height = 512.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'pushpanel'
+        TabOrder = 1
       end
     end
-    object TabItem2: TTabItem
+    object TabItemA: TTabItem
       CustomIcon = <
         item
         end>
@@ -122,24 +80,120 @@ object Form1: TForm1
       Text = 'ALFs'
       ExplicitSize.cx = 45.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
-      object ScrollBar1: TScrollBar
+      object PanelA: TPanel
         Align = Right
-        Max = 1.000000000000000000
-        Min = -1.000000000000000000
-        SmallChange = 0.000000000000000000
-        Orientation = Vertical
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 532.000000000000000000
         Position.Y = 10.000000000000000000
-        Size.Width = 20.000000000000000000
+        Size.Width = 200.000000000000000000
         Size.Height = 512.000000000000000000
         Size.PlatformDefault = False
+        StyleLookup = 'pushpanel'
         TabOrder = 0
-        OnChange = ScrollBar1Change
+        object ScrollBarAD: TScrollBar
+          Max = 512.000000000000000000
+          Value = 8.000000000000000000
+          SmallChange = 0.000000000000000000
+          Orientation = Horizontal
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 15.000000000000000000
+          Position.Y = 75.000000000000000000
+          Size.Width = 170.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          OnChange = ScrollBarADChange
+        end
+        object ComboBoxAA: TComboBox
+          Items.Strings = (
+            'TALFsN8'
+            'TALFsTerm3'
+            'TNALFsTerm3'
+            'TNALFsTerm4')
+          ItemIndex = 0
+          Position.X = 75.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          OnChange = ComboBoxAAChange
+        end
+        object ScrollBarAX: TScrollBar
+          Max = 1.000000000000000000
+          Min = -1.000000000000000000
+          SmallChange = 0.000000000000000000
+          Orientation = Horizontal
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 15.000000000000000000
+          Position.Y = 135.000000000000000000
+          Size.Width = 170.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnChange = ScrollBarAXChange
+        end
+        object LabelAA: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Algorithm :'
+          TabOrder = 6
+        end
+        object SpinBoxAD: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 7
+          Cursor = crIBeam
+          Max = 512.000000000000000000
+          Value = 8.000000000000000000
+          Position.X = 75.000000000000000000
+          Position.Y = 50.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = SpinBoxADChange
+        end
+        object LabelAD: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 50.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Degree :'
+          TabOrder = 5
+        end
+        object EditAX: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 8
+          Position.X = 75.000000000000000000
+          Position.Y = 110.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = EditAXChange
+        end
+        object LabelAX: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 110.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'x :'
+          TabOrder = 4
+        end
       end
-      inline ViewerALFsFrame1: TViewerALFsFrame
+      inline ViewerALFsFrameA: TViewerALFsFrame
         Align = Client
         ClipChildren = True
         Margins.Left = 10.000000000000000000
