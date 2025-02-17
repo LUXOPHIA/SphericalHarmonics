@@ -10,11 +10,17 @@ uses
   Viewer, ViewerALFs,
   LUX.ALFs,
   LUX.ALFs.N8,
-  LUX.ALFs.Standard,
+  LUX.ALFs.N8.Diff,
+  LUX.ALFs.Term3,
+  LUX.ALFs.Term3.Diff,
   LUX.NALFs,
-  LUX.NALFs.Standard,
-  LUX.NALFs.Enomoto,
-  LUX.FNALFs;
+  LUX.NALFs.Diff,
+  LUX.NALFs.Term3,
+  LUX.NALFs.Term3.Diff,
+  LUX.NALFs.Term4,
+  LUX.NALFs.Term4.Diff,
+  LUX.FNALFs,
+  LUX.SH.Diff;
 
 type
   TForm1 = class(TForm)
@@ -52,12 +58,17 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
      _NALFs := TObjectList<TNALFs>.Create;
 
-     _NALFs.Add( TALFsToNALFs<TALFsN8      >.Create );
-     _NALFs.Add( TALFsToNALFs<TALFsStandard>.Create );
-     _NALFs.Add( TNALFsStandard             .Create );
-     _NALFs.Add( TNALFsEnomoto              .Create );
+     _NALFs.Add( TALFsToNALFs<TALFsN8   >.Create );
+     _NALFs.Add( TALFsToNALFs<TALFsTerm3>.Create );
+     _NALFs.Add( TNALFsTerm3             .Create );
+     _NALFs.Add( TNALFsTerm4             .Create );
 
      ComboBox1Change( Sender );
+
+     ViewerFrame1.SPHarm := TdSPHarmonicsT4.Create( 8 );
+
+     ViewerFrame1.N := 8;
+     ViewerFrame1.M := 4;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);

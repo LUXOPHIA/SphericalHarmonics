@@ -300,40 +300,51 @@
         </DelphiCompile>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D1.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D1.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2x2.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D3.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D3.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D3x3.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D4.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D4x4.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.Sphere\S2\LUX.S2.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Complex\LUX.Complex.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Complex\LUX.Complex.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\Color\LUX.Color.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.FMX.Graphics.D3\LUX.FMX.Graphics.D3.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.FMX.Graphics.D3\LUX.FMX.Graphics.D3.Shaper.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Standard.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Standard.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.Sphere\FMX\LUX.Sphere.FMX.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.Sphere\S2\LUX.S2.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FMX\LUX.SH.FMX.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FMX\LUX.SH.FMX.Graphics.D3.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.DIff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Term3.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Term3.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Term3.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Term3.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Term4.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Term4.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.FNALFs.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.Diff.pas"/>
         <DCCReference Include="Viewer.pas">
             <Form>ViewerFrame</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="ViewerALFs.pas">
             <Form>ViewerALFsFrame</Form>
-            <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="Main.pas">
             <Form>Form1</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Core.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.NALFs.Enomoto.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
