@@ -19,6 +19,7 @@ uses
   LUX.NALFs.Term3.Diff,
   LUX.NALFs.Term4,
   LUX.NALFs.Term4.Diff,
+  LUX.FNALFs.Diff,
   LUX.SH.Diff;
 
 type
@@ -70,10 +71,10 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
      _SPHs := TObjectList<TdSPHarmonics>.Create;
 
-     _SPHs.Add( TdSPHarmonics<TdALFsToNALFs<TdALFsN8   >>.Create );  // 0
-     _SPHs.Add( TdSPHarmonics<TdALFsToNALFs<TdALFsTerm3>>.Create );  // 1
-     _SPHs.Add( TdSPHarmonics<TdNALFsTerm3              >.Create );  // 2
-     _SPHs.Add( TdSPHarmonics<TdNALFsTerm4              >.Create );  // 3
+     _SPHs.Add( TdRSPHarmonics<TdALFsToFNALFs <TdALFsN8    >>.Create );  // 0
+     _SPHs.Add( TdRSPHarmonics<TdALFsToFNALFs <TdALFsTerm3 >>.Create );  // 1
+     _SPHs.Add( TdRSPHarmonics<TdNALFsToFNALFs<TdNALFsTerm3>>.Create );  // 2
+     _SPHs.Add( TdRSPHarmonics<TdNALFsToFNALFs<TdNALFsTerm4>>.Create );  // 3
 
      ViewerSH3DFrameS.SPHarm := _SPHs[ 3 ];
 
