@@ -123,6 +123,8 @@ begin
      _SPHarm3D.Material.Ambient  := TAlphaColors.Black;
      _SPHarm3D.Material.Diffuse  := TAlphaColors.White;
      _SPHarm3D.Material.Specular := TAlphaColors.Null;
+
+     _SPHarm3D.Material.Texture.LoadFromFile( '../../_DATA/Sphere 1800x900.png' );
 end;
 
 destructor TViewerSH3DFrame.Destroy;
