@@ -64,6 +64,51 @@ object Form1: TForm1
         Size.PlatformDefault = False
         StyleLookup = 'pushpanel'
         TabOrder = 1
+        object LabelSN: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'N :'
+          TabOrder = 5
+        end
+        object SpinBoxSN: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 8
+          Cursor = crIBeam
+          Max = 64.000000000000000000
+          Value = 5.000000000000000000
+          Position.X = 75.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = SpinBoxSNChange
+        end
+        object SpinBoxSM: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 7
+          Cursor = crIBeam
+          Max = 512.000000000000000000
+          Position.X = 75.000000000000000000
+          Position.Y = 50.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = SpinBoxSMChange
+        end
+        object LabelSM: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 50.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'M :'
+          TabOrder = 4
+        end
       end
     end
     object TabItemA: TTabItem

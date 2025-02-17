@@ -27,6 +27,10 @@ type
       TabItemS: TTabItem;
         ViewerSH3DFrameS: TViewerSH3DFrame;
         PanelS: TPanel;
+          LabelSN: TLabel;
+            SpinBoxSN: TSpinBox;
+          LabelSM: TLabel;
+            SpinBoxSM: TSpinBox;
       TabItemA: TTabItem;
         ViewerALFsFrameA: TViewerALFsFrame;
         PanelA: TPanel;
@@ -40,6 +44,8 @@ type
             EditAX: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SpinBoxSNChange(Sender: TObject);
+    procedure SpinBoxSMChange(Sender: TObject);
     procedure ComboBoxAAChange(Sender: TObject);
     procedure SpinBoxADChange(Sender: TObject);
     procedure ScrollBarADChange(Sender: TObject);
@@ -61,6 +67,11 @@ implementation //###############################################################
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+     ViewerSH3DFrameS.SPHarm := TdSPHarmonicsT4.Create;
+
+     SpinBoxSNChange( Sender );
+     SpinBoxSMChange( Sender );
+
      _NALFs := TObjectList<TNALFs>.Create;
 
      _NALFs.Add( TALFsToNALFs<TALFsN8   >.Create );
@@ -69,16 +80,26 @@ begin
      _NALFs.Add( TNALFsTerm4             .Create );
 
      ComboBoxAAChange( Sender );
-
-     ViewerSH3DFrameS.SPHarm := TdSPHarmonicsT4.Create;
-
-     ViewerSH3DFrameS.N := 5;
-     ViewerSH3DFrameS.M := 3;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
      _NALFs.Free;
+end;
+
+//------------------------------------------------------------------------------
+
+procedure TForm1.SpinBoxSNChange(Sender: TObject);
+begin
+     ViewerSH3DFrameS.N := Round( SpinBoxSN.Value );
+
+     SpinBoxSM.Min := -ViewerSH3DFrameS.N;
+     SpinBoxSM.Max := +ViewerSH3DFrameS.N;
+end;
+
+procedure TForm1.SpinBoxSMChange(Sender: TObject);
+begin
+     ViewerSH3DFrameS.M := Round( SpinBoxSM.Value );
 end;
 
 //------------------------------------------------------------------------------
