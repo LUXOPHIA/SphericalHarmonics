@@ -54,8 +54,6 @@ end;
 
 procedure TViewerALFsFrame.SetALFs( const ALFs_:TNALFs );
 begin
-     if _NALFs = ALFs_ then Exit;
-
      if Assigned( _NALFs ) then _NALFs.OnChange.Del( OnUpALFs );
 
      _NALFs := ALFs_;
