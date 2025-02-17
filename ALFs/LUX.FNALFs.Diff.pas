@@ -1,10 +1,11 @@
-﻿unit LUX.FNALFs;
+﻿unit LUX.FNALFs.Diff;
 
 interface //#################################################################### ■
 
 uses LUX,
-     LUX.ALFs,
-     LUX.NALFs;
+     LUX.D1.Diff,
+     LUX.ALFs.Diff,
+     LUX.NALFs.Diff;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 T Y P E 】
 
@@ -12,30 +13,30 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 C L A S S 】
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TFNALFs :Fully Normalized Associated Legendre functions
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdFNALFs :Fully Normalized Associated Legendre functions
 
-     TFNALFs = class( TNALFs )
+     TdFNALFs = class( TdNALFs )
      private
      protected
        ///// A C C E S S O R
-       function GetNFs( const N_,M_:Integer ) :Double; override;
+       function GetNFs( const N_,M_:Integer ) :TdDouble; override;
      public
      end;
 
      //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TALFsToFNALFs
 
-     TALFsToFNALFs<TALFs_:TALFs,constructor> = class( TNALFs )
+     TdALFsToFNALFs<TdALFs_:TdALFs,constructor> = class( TdNALFs )
      private
      protected
-       _ALFs :TALFs_;
-       _NFs  :TArray2<Double>;  upNFs:Boolean;
+       _dALFs :TdALFs_;
+       _NFs   :TArray2<TdDouble>;  upNFs:Boolean;
        ///// A C C E S S O R
        function GetDegN :Integer; override;
        procedure SetDegN( const DegN_:Integer ); override;
-       function GetX :Double; override;
-       procedure SetX( const X_:Double ); override;
-       function GetNFs( const N_,M_:Integer ) :Double; override;
-       function GetPs( const N_,M_:Integer ) :Double; override;
+       function GetX :TdDouble; override;
+       procedure SetX( const X_:TdDouble ); override;
+       function GetNFs( const N_,M_:Integer ) :TdDouble; override;
+       function GetPs( const N_,M_:Integer ) :TdDouble; override;
        ///// M E T H O D
        procedure InitNFs;
      public
@@ -43,28 +44,28 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        constructor Create( const DegN_:Integer ); overload;
        destructor Destroy; override;
        ///// P R O P E R T Y
-       property ALFs :TALFs_ read _ALFs;
+       property ALFs :TdALFs_ read _dALFs;
      end;
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TNALFsToFNALFs
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdNALFsToFNALFs<TdNALFs_>
 
-     TNALFsToFNALFs<TNALFs_:TNALFs,constructor> = class( TFNALFs )
+     TdNALFsToFNALFs<TdNALFs_:TdNALFs,constructor> = class( TdFNALFs )
      private
      protected
-       _NALFs :TNALFs_;
+       _dNALFs :TdNALFs_;
        ///// A C C E S S O R
        function GetDegN :Integer; override;
        procedure SetDegN( const DegN_:Integer ); override;
-       function GetX :Double; override;
-       procedure SetX( const X_:Double ); override;
-       function GetNFs( const N_,M_:Integer ) :Double; override;
-       function GetPs( const N_,M_:Integer ) :Double; override;
+       function GetX :TdDouble; override;
+       procedure SetX( const X_:TdDouble ); override;
+       function GetNFs( const N_,M_:Integer ) :TdDouble; override;
+       function GetPs( const N_,M_:Integer ) :TdDouble; override;
      public
        constructor Create; overload;
        constructor Create( const DegN_:Integer ); overload;
        destructor Destroy; override;
        ///// P R O P E R T Y
-       property NALFs :TNALFs_ read _NALFs;
+       property dNALFs :TdNALFs_ read _dNALFs;
      end;
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 R O U T I N E 】
@@ -75,7 +76,7 @@ implementation //###############################################################
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 C L A S S 】
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TFNALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdFNALFs
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -83,22 +84,22 @@ implementation //###############################################################
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TFNALFs.GetNFs( const N_,M_:Integer ) :Double;
+function TdFNALFs.GetNFs( const N_,M_:Integer ) :TdDouble;
 var
-   K :Double;
+   K :TdDouble;
    I :Integer;
 begin
      if M_ = 0 then K := 1
                else K := 2;
 
-     Result := Sqrt( K * ( 2 * N_ + 1 ) );
+     Result := Roo2( K * ( 2 * N_ + 1 ) );
 
      for I := N_ - M_ + 1 to N_ + M_ do Result := Result / Sqrt( I );
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TALFsToFNALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdALFsToFNALFs
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -106,35 +107,35 @@ end;
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TALFsToFNALFs<TALFs_>.GetDegN :Integer;
+function TdALFsToFNALFs<TdALFs_>.GetDegN :Integer;
 begin
-     Result := _ALFs.DegN;
+     Result := _dALFs.DegN;
 end;
 
-procedure TALFsToFNALFs<TALFs_>.SetDegN( const DegN_:Integer );
+procedure TdALFsToFNALFs<TdALFs_>.SetDegN( const DegN_:Integer );
 begin
      inherited;
 
-     _ALFs.DegN := DegN_;  upNFs := True;
+     _dALFs.DegN := DegN_;  upNFs := True;
 end;
 
 //------------------------------------------------------------------------------
 
-function TALFsToFNALFs<TALFs_>.GetX :Double;
+function TdALFsToFNALFs<TdALFs_>.GetX :TdDouble;
 begin
-     Result := _ALFs.X;
+     Result := _dALFs.X;
 end;
 
-procedure TALFsToFNALFs<TALFs_>.SetX( const X_:Double );
+procedure TdALFsToFNALFs<TdALFs_>.SetX( const X_:TdDouble );
 begin
      inherited;
 
-     _ALFs.X := X_;
+     _dALFs.X := X_;
 end;
 
 //------------------------------------------------------------------------------
 
-function TALFsToFNALFs<TALFs_>.GetNFs( const N_,M_:Integer ) :Double;
+function TdALFsToFNALFs<TdALFs_>.GetNFs( const N_,M_:Integer ) :TdDouble;
 begin
      if upNFs then
      begin
@@ -148,14 +149,14 @@ end;
 
 //------------------------------------------------------------------------------
 
-function TALFsToFNALFs<TALFs_>.GetPs( const N_,M_:Integer ) :Double;
+function TdALFsToFNALFs<TdALFs_>.GetPs( const N_,M_:Integer ) :TdDouble;
 begin
-     Result := NFs[ N_, M_ ] * _ALFs.Ps[ N_, M_ ];
+     Result := NFs[ N_, M_ ] * _dALFs.Ps[ N_, M_ ];
 end;
 
 //////////////////////////////////////////////////////////////////// M E T H O D
 
-procedure TALFsToFNALFs<TALFs_>.InitNFs;
+procedure TdALFsToFNALFs<TdALFs_>.InitNFs;
 var
    N, M :Integer;
 begin
@@ -170,28 +171,28 @@ end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-constructor TALFsToFNALFs<TALFs_>.Create;
+constructor TdALFsToFNALFs<TdALFs_>.Create;
 begin
-     _ALFs := TALFs_.Create;
+     _dALFs := TdALFs_.Create;
 
      inherited;
 end;
 
-constructor TALFsToFNALFs<TALFs_>.Create( const DegN_:Integer );
+constructor TdALFsToFNALFs<TdALFs_>.Create( const DegN_:Integer );
 begin
-     _ALFs := TALFs_.Create;
+     _dALFs := TdALFs_.Create;
 
      inherited;
 end;
 
-destructor TALFsToFNALFs<TALFs_>.Destroy;
+destructor TdALFsToFNALFs<TdALFs_>.Destroy;
 begin
-     _ALFs.Free;
+     _dALFs.Free;
 
      inherited;
 end;
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TNALFsToFNALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdNALFsToFNALFs<TdNALFs_>
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -199,65 +200,65 @@ end;
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TNALFsToFNALFs<TNALFs_>.GetDegN :Integer;
+function TdNALFsToFNALFs<TdNALFs_>.GetDegN :Integer;
 begin
-     Result := _NALFs.DegN;
+     Result := _dNALFs.DegN;
 end;
 
-procedure TNALFsToFNALFs<TNALFs_>.SetDegN( const DegN_:Integer );
+procedure TdNALFsToFNALFs<TdNALFs_>.SetDegN( const DegN_:Integer );
 begin
      inherited;
 
-     _NALFs.DegN := DegN_;
+     _dNALFs.DegN := DegN_;
 end;
 
 //------------------------------------------------------------------------------
 
-function TNALFsToFNALFs<TNALFs_>.GetX :Double;
+function TdNALFsToFNALFs<TdNALFs_>.GetX :TdDouble;
 begin
-     Result := _NALFs.X;
+     Result := _dNALFs.X;
 end;
 
-procedure TNALFsToFNALFs<TNALFs_>.SetX( const X_:Double );
+procedure TdNALFsToFNALFs<TdNALFs_>.SetX( const X_:TdDouble );
 begin
      inherited;
 
-     _NALFs.X := X_;
+     _dNALFs.X := X_;
 end;
 
 //------------------------------------------------------------------------------
 
-function TNALFsToFNALFs<TNALFs_>.GetNFs( const N_,M_:Integer ) :Double;
+function TdNALFsToFNALFs<TdNALFs_>.GetNFs( const N_,M_:Integer ) :TdDouble;
 begin
      if M_ = 0 then Result := 1
                else Result := Sqrt(2);
 end;
 //------------------------------------------------------------------------------
 
-function TNALFsToFNALFs<TNALFs_>.GetPs( const N_,M_:Integer ) :Double;
+function TdNALFsToFNALFs<TdNALFs_>.GetPs( const N_,M_:Integer ) :TdDouble;
 begin
-     Result := NFs[ N_, M_ ] * _NALFs.Ps[ N_, M_ ];
+     Result := NFs[ N_, M_ ] * _dNALFs.Ps[ N_, M_ ];
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-constructor TNALFsToFNALFs<TNALFs_>.Create;
+constructor TdNALFsToFNALFs<TdNALFs_>.Create;
 begin
      inherited;
 
-     _NALFs := TNALFs_.Create;
+     _dNALFs := TdNALFs_.Create;
 end;
 
-constructor TNALFsToFNALFs<TNALFs_>.Create( const DegN_:Integer );
+constructor TdNALFsToFNALFs<TdNALFs_>.Create( const DegN_:Integer );
 begin
      Create;
 
-     _NALFs.DegN := DegN_;
+     _dNALFs.DegN := DegN_;
 end;
 
-destructor TNALFsToFNALFs<TNALFs_>.Destroy;
+destructor TdNALFsToFNALFs<TdNALFs_>.Destroy;
 begin
-     _NALFs.Free;
+     _dNALFs.Free;
 
      inherited;
 end;

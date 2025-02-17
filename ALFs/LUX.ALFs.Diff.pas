@@ -1,8 +1,9 @@
-﻿unit LUX.ALFs;
+﻿unit LUX.ALFs.Diff;
 
 interface //#################################################################### ■
 
-uses LUX;
+uses LUX,
+     LUX.D1.Diff;
 
 type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 T Y P E 】
 
@@ -10,9 +11,9 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 C L A S S 】
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TALFs :Associated Legendre functions
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdALFs :Associated Legendre functions
 
-     TALFs = class
+     TdALFs = class
      private
      protected
        ///// E V E N T
@@ -20,35 +21,35 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        ///// A C C E S S O R
        function GetDegN :Integer; virtual; abstract;
        procedure SetDegN( const DegN_:Integer ); virtual;
-       function GetX :Double; virtual; abstract;
-       procedure SetX( const X_:Double ); virtual;
-       function GetPs( const N_,M_:Integer ) :Double; virtual; abstract;
+       function GetX :TdDouble; virtual; abstract;
+       procedure SetX( const X_:TdDouble ); virtual;
+       function GetPs( const N_,M_:Integer ) :TdDouble; virtual; abstract;
      public
        constructor Create; overload;
        constructor Create( const DegN_:Integer ); overload;
        destructor Destroy; override;
        ///// P R O P E R T Y
-       property DegN                      :Integer read GetDegN write SetDegN;
-       property X                         :Double  read GetX    write SetX   ;
-       property Ps[ const N_,M_:Integer ] :Double  read GetPs                ; default;
+       property DegN                      :Integer  read GetDegN write SetDegN;
+       property X                         :TdDouble read GetX    write SetX   ;
+       property Ps[ const N_,M_:Integer ] :TdDouble read GetPs                ; default;
        ///// E V E N T
        property OnChange :TDelegates read _OnChange;
      end;
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TMapALFs
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdMapALFs
 
-     TMapALFs = class( TALFs )
+     TdMapALFs = class( TdALFs )
      private
      protected
        _DegN :Integer;
-       _X    :Double;
-       _Ps   :TArray2<Double>;  upALPs:Boolean;
+       _X    :TdDouble;
+       _Ps   :TArray2<TdDouble>;  upALPs:Boolean;
        ///// A C C E S S O R
        function GetDegN :Integer; override;
        procedure SetDegN( const DegN_:Integer ); override;
-       function GetX :Double; override;
-       procedure SetX( const X_:Double ); override;
-       function GetPs( const N_,M_:Integer ) :Double; override;
+       function GetX :TdDouble; override;
+       procedure SetX( const X_:TdDouble ); override;
+       function GetPs( const N_,M_:Integer ) :TdDouble; override;
        ///// M E T H O D
        procedure InitALPs;
        procedure CalcALPs; virtual; abstract;
@@ -63,7 +64,7 @@ implementation //###############################################################
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$【 C L A S S 】
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdALFs
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -71,21 +72,21 @@ implementation //###############################################################
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-procedure TALFs.SetDegN( const DegN_:Integer );
+procedure TdALFs.SetDegN( const DegN_:Integer );
 begin
      OnChange.Run( Self );
 end;
 
 //------------------------------------------------------------------------------
 
-procedure TALFs.SetX( const X_:Double );
+procedure TdALFs.SetX( const X_:TdDouble );
 begin
      OnChange.Run( Self );
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-constructor TALFs.Create;
+constructor TdALFs.Create;
 begin
      inherited;
 
@@ -93,7 +94,7 @@ begin
      X    := 0;
 end;
 
-constructor TALFs.Create( const DegN_:Integer );
+constructor TdALFs.Create( const DegN_:Integer );
 begin
      inherited Create;
 
@@ -101,13 +102,13 @@ begin
      X    := 0;
 end;
 
-destructor TALFs.Destroy;
+destructor TdALFs.Destroy;
 begin
 
      inherited;
 end;
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TMapALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdMapALFs
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -115,12 +116,12 @@ end;
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TMapALFs.GetDegN :Integer;
+function TdMapALFs.GetDegN :Integer;
 begin
      Result := _DegN;
 end;
 
-procedure TMapALFs.SetDegN( const DegN_:Integer );
+procedure TdMapALFs.SetDegN( const DegN_:Integer );
 begin
      if _DegN = DegN_ then Exit;
 
@@ -131,12 +132,12 @@ end;
 
 //------------------------------------------------------------------------------
 
-function TMapALFs.GetX :Double;
+function TdMapALFs.GetX :TdDouble;
 begin
      Result := _X;
 end;
 
-procedure TMapALFs.SetX( const X_:Double );
+procedure TdMapALFs.SetX( const X_:TdDouble );
 begin
      if _X = X_ then Exit;
 
@@ -147,7 +148,7 @@ end;
 
 //------------------------------------------------------------------------------
 
-function TMapALFs.GetPs( const N_,M_:Integer ) :Double;
+function TdMapALFs.GetPs( const N_,M_:Integer ) :TdDouble;
 begin
      if upALPs then
      begin
@@ -161,7 +162,7 @@ end;
 
 //////////////////////////////////////////////////////////////////// M E T H O D
 
-procedure TMapALFs.InitALPs;
+procedure TdMapALFs.InitALPs;
 var
    N :Integer;
 begin
