@@ -300,7 +300,7 @@
         </DelphiCompile>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D1.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D1.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D1.DIff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D2x2.pas"/>
@@ -345,6 +345,8 @@
             <Form>Form1</Form>
         </DCCReference>
         <DCCReference Include="Core.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D4.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX\LUX.D4x4.Diff.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
