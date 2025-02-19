@@ -43,8 +43,11 @@ type
             ScrollBarAD: TScrollBar;
           LabelAX: TLabel;
             EditAX: TEdit;
+    LabelSA: TLabel;
+    ComboBoxSA: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure ComboBoxSAChange(Sender: TObject);
     procedure SpinBoxSNChange(Sender: TObject);
     procedure SpinBoxSMChange(Sender: TObject);
     procedure ComboBoxAAChange(Sender: TObject);
@@ -76,17 +79,16 @@ begin
      _SPHs.Add( TdRSPHarmonics<TdNALFsToFNALFs<TdNALFsTerm3>>.Create );  // 2
      _SPHs.Add( TdRSPHarmonics<TdNALFsToFNALFs<TdNALFsTerm4>>.Create );  // 3
 
-     ViewerSH3DFrameS.SPHarm := _SPHs[ 3 ];
-
+     ComboBoxSAChange( Sender );
      SpinBoxSNChange( Sender );
      SpinBoxSMChange( Sender );
 
      _NALFs := TObjectList<TNALFs>.Create;
 
-     _NALFs.Add( TALFsToNALFs<TALFsN8   >.Create );  // 0
-     _NALFs.Add( TALFsToNALFs<TALFsTerm3>.Create );  // 1
-     _NALFs.Add( TNALFsTerm3             .Create );  // 2
-     _NALFs.Add( TNALFsTerm4             .Create );  // 3
+     _NALFs.Add( TALFsToNALFs<TALFsN8    >.Create );  // 0
+     _NALFs.Add( TALFsToNALFs<TALFsTerm3 >.Create );  // 1
+     _NALFs.Add(              TNALFsTerm3 .Create );  // 2
+     _NALFs.Add(              TNALFsTerm4 .Create );  // 3
 
      ComboBoxAAChange( Sender );
 end;
@@ -95,6 +97,13 @@ procedure TForm1.FormDestroy(Sender: TObject);
 begin
      _NALFs.Free;
      _SPHs .Free;
+end;
+
+//------------------------------------------------------------------------------
+
+procedure TForm1.ComboBoxSAChange(Sender: TObject);
+begin
+     ViewerSH3DFrameS.SPHarm := _SPHs[ ComboBoxSA.ItemIndex ];
 end;
 
 //------------------------------------------------------------------------------

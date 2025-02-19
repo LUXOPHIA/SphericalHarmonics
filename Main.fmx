@@ -66,22 +66,22 @@ object Form1: TForm1
         TabOrder = 1
         object LabelSN: TLabel
           Position.X = 5.000000000000000000
-          Position.Y = 15.000000000000000000
+          Position.Y = 50.000000000000000000
           Size.Width = 66.000000000000000000
           Size.Height = 20.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Trailing
           Text = 'n :'
-          TabOrder = 0
+          TabOrder = 2
         end
         object SpinBoxSN: TSpinBox
           Touch.InteractiveGestures = [LongTap, DoubleTap]
-          TabOrder = 1
+          TabOrder = 3
           Cursor = crIBeam
           Max = 64.000000000000000000
           Value = 5.000000000000000000
           Position.X = 75.000000000000000000
-          Position.Y = 15.000000000000000000
+          Position.Y = 50.000000000000000000
           Size.Width = 110.000000000000000000
           Size.Height = 20.000000000000000000
           Size.PlatformDefault = False
@@ -89,12 +89,12 @@ object Form1: TForm1
         end
         object SpinBoxSM: TSpinBox
           Touch.InteractiveGestures = [LongTap, DoubleTap]
-          TabOrder = 3
+          TabOrder = 5
           Cursor = crIBeam
           Max = 512.000000000000000000
           Value = 3.000000000000000000
           Position.X = 75.000000000000000000
-          Position.Y = 50.000000000000000000
+          Position.Y = 85.000000000000000000
           Size.Width = 110.000000000000000000
           Size.Height = 20.000000000000000000
           Size.PlatformDefault = False
@@ -102,13 +102,38 @@ object Form1: TForm1
         end
         object LabelSM: TLabel
           Position.X = 5.000000000000000000
-          Position.Y = 50.000000000000000000
+          Position.Y = 85.000000000000000000
           Size.Width = 66.000000000000000000
           Size.Height = 20.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Trailing
           Text = 'm :'
-          TabOrder = 2
+          TabOrder = 4
+        end
+        object LabelSA: TLabel
+          Position.X = 5.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Algorithm :'
+          TabOrder = 0
+        end
+        object ComboBoxSA: TComboBox
+          Items.Strings = (
+            'TdALFsN8'
+            'TdALFsTerm3'
+            'TdNALFsTerm3'
+            'TdNALFsTerm4')
+          ItemIndex = 2
+          Position.X = 75.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 110.000000000000000000
+          Size.Height = 20.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          OnChange = ComboBoxSAChange
         end
       end
     end
@@ -160,7 +185,7 @@ object Form1: TForm1
             'TALFsTerm3'
             'TNALFsTerm3'
             'TNALFsTerm4')
-          ItemIndex = 0
+          ItemIndex = 2
           Position.X = 75.000000000000000000
           Position.Y = 15.000000000000000000
           Size.Width = 110.000000000000000000
