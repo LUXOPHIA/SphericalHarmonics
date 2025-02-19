@@ -29,6 +29,7 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        _Light3DX :TLight3D;
        _Light3DY :TLight3D;
        _Light3DZ :TLight3D;
+       _SPHarm3D :TSPHarmonics3D;
        ///// A C C E S S O R
        function GetSPHarm :TdSPHarmonics;
        procedure SetSPHarm( const SPHarm_:TdSPHarmonics );
@@ -37,7 +38,6 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        function GetM :Integer;
        procedure SetM( const M_:Integer );
      public
-       _SPHarm3D :TSPHarmonics3D;
        constructor Create( Owner_:TComponent ); override;
        destructor Destroy; override;
        ///// P R O P E R T Y
@@ -123,7 +123,6 @@ begin
      _SPHarm3D.Material.Ambient  := TAlphaColors.Black;
      _SPHarm3D.Material.Diffuse  := TAlphaColors.White;
      _SPHarm3D.Material.Specular := TAlphaColors.Null;
-
      _SPHarm3D.Material.Texture.LoadFromFile( '../../_DATA/Sphere 1800x900.png' );
 end;
 
