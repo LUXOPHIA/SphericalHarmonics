@@ -36,23 +36,29 @@ type //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
        property OnChange :TDelegates read _OnChange;
      end;
 
-     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdMapALFs
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdCoreALFs
 
-     TdMapALFs = class( TdALFs )
+     TdCoreALFs = class( TdALFs )
      private
      protected
        _DegN :Integer;
        _X    :TdDouble;
-       _Ps   :TArray2<TdDouble>;  upALPs:Boolean;
        ///// A C C E S S O R
        function GetDegN :Integer; override;
        procedure SetDegN( const DegN_:Integer ); override;
        function GetX :TdDouble; override;
        procedure SetX( const X_:TdDouble ); override;
-       function GetPs( const N_,M_:Integer ) :TdDouble; override;
-       ///// M E T H O D
-       procedure InitALPs;
-       procedure CalcALPs; virtual; abstract;
+     public
+     end;
+
+     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdCacheALFs
+
+     TdCacheALFs = class( TdCoreALFs )
+     private
+     protected
+       _Ps :TArray2<TdDouble>;
+       ///// A C C E S S O R
+       procedure SetDegN( const DegN_:Integer ); override;
      public
      end;
 
@@ -108,7 +114,7 @@ begin
      inherited;
 end;
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdMapALFs
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdCoreALFs
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
@@ -116,54 +122,52 @@ end;
 
 //////////////////////////////////////////////////////////////// A C C E S S O R
 
-function TdMapALFs.GetDegN :Integer;
+function TdCoreALFs.GetDegN :Integer;
 begin
      Result := _DegN;
 end;
 
-procedure TdMapALFs.SetDegN( const DegN_:Integer );
+procedure TdCoreALFs.SetDegN( const DegN_:Integer );
 begin
      inherited;
 
-     _DegN := DegN_;  InitALPs;  upALPs := True;
+     _DegN := DegN_;
 end;
 
 //------------------------------------------------------------------------------
 
-function TdMapALFs.GetX :TdDouble;
+function TdCoreALFs.GetX :TdDouble;
 begin
      Result := _X;
 end;
 
-procedure TdMapALFs.SetX( const X_:TdDouble );
+procedure TdCoreALFs.SetX( const X_:TdDouble );
 begin
      inherited;
 
-     _X := X_;  upALPs := True;
+     _X := X_;
 end;
 
-//------------------------------------------------------------------------------
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
 
-function TdMapALFs.GetPs( const N_,M_:Integer ) :TdDouble;
-begin
-     if upALPs then
-     begin
-          upALPs := False;
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TdCacheALFs
 
-          CalcALPs;
-     end;
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& private
 
-     Result := _Ps[ N_, M_ ];
-end;
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& protected
 
-//////////////////////////////////////////////////////////////////// M E T H O D
+//////////////////////////////////////////////////////////////// A C C E S S O R
 
-procedure TdMapALFs.InitALPs;
+procedure TdCacheALFs.SetDegN( const DegN_:Integer );
 var
    N :Integer;
 begin
+     inherited;
+
      SetLength( _Ps, DegN+1 );
      for N := 0 to DegN do SetLength( _Ps[ N ], N+1 );
+
+     _Ps[ 0, 0 ] := 1;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
