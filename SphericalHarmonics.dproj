@@ -326,6 +326,14 @@
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.N8.DIff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Term3.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\ALFs\LUX.ALFs.Term3.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term3.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term3.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term4.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term4.Diff.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FNALFs\LUX.FNALFs.pas"/>
+        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FNALFs\LUX.FNALFs.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\LUX.SH.Diff.pas"/>
         <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FMX\LUX.SH.FMX.Graphics.D3.pas"/>
@@ -341,14 +349,6 @@
             <Form>Form1</Form>
         </DCCReference>
         <DCCReference Include="Core.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Diff.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term3.Diff.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term3.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term4.Diff.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\NALFs\LUX.NALFs.Term4.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FNALFs\LUX.FNALFs.pas"/>
-        <DCCReference Include="_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FNALFs\LUX.FNALFs.Diff.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
