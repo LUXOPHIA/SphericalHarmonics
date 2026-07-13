@@ -137,6 +137,8 @@ end;
 procedure TdSPHarmonics.SetAngleX( const AngleX_:TdDouble );
 begin
      _AngleX := AngleX_;
+
+     OnUpALFs( Self );
 end;
 
 function TdSPHarmonics.GetAngleY :TdDouble;
@@ -179,8 +181,16 @@ begin
 
      if M_ < 0 then
      begin
-          Result.R := A * S;
-          Result.I := A * C;
+          if Odd( M ) then  // Yn^-m = (-1)^m × conj( Yn^+m )
+          begin
+               Result.R := -A * C;
+               Result.I := +A * S;
+          end
+          else
+          begin
+               Result.R := +A * C;
+               Result.I := -A * S;
+          end;
      end
      else
      begin
@@ -198,8 +208,10 @@ begin
 
      A := _dALFs[ N_, M ] / Sqrt( Pi2 );
 
-     if M_ < 0 then Result := A * Sin( M * _AngleX )
-               else Result := A * Cos( M * _AngleX );
+     if M_ < 0 then Result := Sqrt( 2 ) * A * Sin( M * _AngleX )
+               else
+     if M_ > 0 then Result := Sqrt( 2 ) * A * Cos( M * _AngleX )
+               else Result := A;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
@@ -208,12 +220,16 @@ constructor TdSPHarmonics<TdNALFs_>.Create;
 begin
      _dALFs := TdNALFs_.Create;
 
+     _dALFs.OnChange.Add( OnUpALFs );
+
      inherited;
 end;
 
 constructor TdSPHarmonics<TdNALFs_>.Create( const DegN_:Integer );
 begin
      _dALFs := TdNALFs_.Create;
+
+     _dALFs.OnChange.Add( OnUpALFs );
 
      inherited Create;
 
@@ -275,12 +291,16 @@ constructor TdRSPHarmonics<TdFNALFs_>.Create;
 begin
      _dALFs := TdFNALFs_.Create;
 
+     _dALFs.OnChange.Add( OnUpALFs );
+
      inherited;
 end;
 
 constructor TdRSPHarmonics<TdFNALFs_>.Create( const DegN_:Integer );
 begin
      _dALFs := TdFNALFs_.Create;
+
+     _dALFs.OnChange.Add( OnUpALFs );
 
      inherited Create;
 
