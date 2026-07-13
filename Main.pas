@@ -150,13 +150,14 @@ end;
 //------------------------------------------------------------------------------
 
 procedure TForm1.EditAXChange(Sender: TObject);
+var
+   X :Double;
 begin
-     try
-        ViewerALFsFrameA.NALFs.X := EditAX.Text.ToDouble;
+     if TryStrToFloat( EditAX.Text, X ) then
+     begin
+          ViewerALFsFrameA.NALFs.X := X;
 
-        ScrollBarAX.Value := ViewerALFsFrameA.NALFs.X;
-     finally
-
+          ScrollBarAX.Value        := X;
      end;
 end;
 
