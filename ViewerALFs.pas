@@ -88,9 +88,9 @@ var
    D :TBitmapData;
 begin
      _BMP.SetSize( NALFs.DegN+1, NALFs.DegN+1 );
+     _BMP.Clear( TAlphaColors.Null );  // m > n の領域は透明のまま残る
      _BMP.Map( TMapAccess.Write, D );
 
-     NALFs[ 0, 0 ];  // 遅延評価を実行
      TParallel.For( 0, NALFs.DegN, procedure ( N:Integer )
      var
         P :PAlphaColor;
