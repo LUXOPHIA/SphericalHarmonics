@@ -137,14 +137,16 @@ end;
 
 procedure TForm1.SpinBoxADChange(Sender: TObject);
 begin
-     ViewerALFsFrameA.NALFs.DegN := Round( SpinBoxAD.Value );
+     if ViewerALFsFrameA.NALFs.DegN <> Round( SpinBoxAD.Value ) then
+          ViewerALFsFrameA.NALFs.DegN := Round( SpinBoxAD.Value );
 
      ScrollBarAD.Value := SpinBoxAD.Value;
 end;
 
 procedure TForm1.ScrollBarADChange(Sender: TObject);
 begin
-     ViewerALFsFrameA.NALFs.DegN := Round( ScrollBarAD.Value );
+     if ViewerALFsFrameA.NALFs.DegN <> Round( ScrollBarAD.Value ) then
+          ViewerALFsFrameA.NALFs.DegN := Round( ScrollBarAD.Value );
 
      SpinBoxAD.Value := ScrollBarAD.Value;
 end;
