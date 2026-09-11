@@ -11,6 +11,8 @@ Beyond the operators the unit exports free functions overloaded per precision: `
 
 `LUX.Complex.Diff` repeats the whole surface with `TdSingleC` / `TdDoubleC`, whose components are the dual scalars `TdSingle` / `TdDouble` of `LUX.D1.Diff`; the `o` and `d` properties view the value and the derivative as plain complex numbers. Random generators (`RandG`, `RandBS1/2/4`) draw each component independently from the corresponding scalar generator: Gaussian, or the sum of one, two or four uniform variates on $[-\tfrac{1}{2},\tfrac{1}{2})$.
 
+[`LUX.Complex.CP1`](CP1/README.md) provides homogeneous complex coordinates through `TSingleCP1` / `TDoubleCP1`.
+
 ## 2. Mathematical Background
 
 ### 2.1 Arithmetic
