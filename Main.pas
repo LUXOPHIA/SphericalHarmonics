@@ -70,6 +70,8 @@ implementation //###############################################################
 
 {$R *.fmx}
 
+uses System.Math;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
      _SPHs := TObjectList<TdSPHarmonics>.Create;
@@ -155,9 +157,15 @@ var
 begin
      if TryStrToFloat( EditAX.Text, X ) then
      begin
+          if IsNan( X ) then Exit;
+
+          X := EnsureRange( X, ScrollBarAX.Min, ScrollBarAX.Max );
+
           ViewerALFsFrameA.NALFs.X := X;
 
           ScrollBarAX.Value        := X;
+
+          EditAX.Text := X.ToString;
      end;
 end;
 
