@@ -11,6 +11,8 @@
 
 `LUX.Complex.Diff` は同じ構成を `TdSingleC` / `TdDoubleC` で繰り返す。その成分は `LUX.D1.Diff` の双対スカラ `TdSingle` / `TdDouble` であり、プロパティ `o` と `d` は値と微分を素の複素数として見せる。乱数生成（`RandG`・`RandBS1/2/4`）は各成分を対応するスカラ生成器から独立に引く。ガウス分布、あるいは $[-\tfrac{1}{2},\tfrac{1}{2})$ 上の一様変量1個・2個・4個の和である。
 
+[`LUX.Complex.CP1`](../CP1/ja/README.md) は斉次複素座標を保持する `TSingleCP1` / `TDoubleCP1` を提供する。
+
 ## 2. 数学的背景
 
 ### 2.1 算術
