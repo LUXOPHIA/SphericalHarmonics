@@ -189,7 +189,6 @@ r(\theta,\varphi) = R\,\bigl|\sqrt{4\pi}\,Y_n^m(\theta,\varphi)\bigr| \tag{13}
   ┣・Main.pas / .fmx            ･･･ メインフォーム：タブと計算経路／次数／位数
   ┣・ViewerSH3D.pas / .fmx      ･･･ 3Dビューア：カメラ・ライト・TSPHarmonics3D
   ┣・ViewerALFs.pas / .fmx      ･･･ 2Dビューア：ALFs 三角配列のビットマップ
-  ┣・Core.pas                   ･･･ 共通定義（空の雛形）
   ┣・_DATA/                     ･･･ テクスチャ（Sphere 1800x900.png）
   ┗・_LIBRARY/LUXOPHIA/
      ┣・LUX/                    ･･･ 数学基盤：二重数・ベクトル・複素数

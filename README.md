@@ -189,7 +189,6 @@ so that $Y_0^0 = 1/\sqrt{4\pi}$ renders as the unit sphere. The map $(\theta,\va
   ┣・Main.pas / .fmx            ･･･ main form: tabs, algorithm/degree/order
   ┣・ViewerSH3D.pas / .fmx      ･･･ 3D viewer: camera, lights, TSPHarmonics3D
   ┣・ViewerALFs.pas / .fmx      ･･･ 2D viewer: triangular ALFs-table bitmap
-  ┣・Core.pas                   ･･･ shared definitions (empty scaffold)
   ┣・_DATA/                     ･･･ texture (Sphere 1800x900.png)
   ┗・_LIBRARY/LUXOPHIA/
      ┣・LUX/                    ･･･ math base: dual numbers, vectors, complex

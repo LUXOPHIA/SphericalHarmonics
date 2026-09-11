@@ -44,8 +44,7 @@ uses
   LUX.SH.FMX.Graphics.D3 in '_LIBRARY\LUXOPHIA\LUX.SphericalHarmonics\FMX\LUX.SH.FMX.Graphics.D3.pas',
   ViewerSH3D in 'ViewerSH3D.pas' {ViewerSH3DFrame: TFrame},
   ViewerALFs in 'ViewerALFs.pas' {ViewerALFsFrame: TFrame},
-  Main in 'Main.pas' {Form1},
-  Core in 'Core.pas';
+  Main in 'Main.pas' {Form1};
 
 {$R *.res}
 
