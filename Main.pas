@@ -163,7 +163,8 @@ begin
 
           X := EnsureRange( X, ScrollBarAX.Min, ScrollBarAX.Max );
 
-          ViewerALFsFrameA.NALFs.X := X;
+          if ViewerALFsFrameA.NALFs.X <> X then
+               ViewerALFsFrameA.NALFs.X := X;
 
           ScrollBarAX.Value        := X;
 
@@ -173,7 +174,8 @@ end;
 
 procedure TForm1.ScrollBarAXChange(Sender: TObject);
 begin
-     ViewerALFsFrameA.NALFs.X := ScrollBarAX.Value;
+     if ViewerALFsFrameA.NALFs.X <> ScrollBarAX.Value then
+          ViewerALFsFrameA.NALFs.X := ScrollBarAX.Value;
 
      EditAX.Text := ScrollBarAX.Value.ToString;
 end;
