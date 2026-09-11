@@ -162,7 +162,7 @@ procedure TViewerSH3DFrame.Viewport3D1MouseUp(Sender: TObject; Button: TMouseBut
 begin
      Viewport3D1MouseMove( Sender, Shift, X, Y );
 
-     _MouseS := [];
+     if Button = TMouseButton.mbLeft then _MouseS := [];
 end;
 
 end. //######################################################################### ■
