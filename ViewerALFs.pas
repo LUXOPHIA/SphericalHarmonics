@@ -71,12 +71,7 @@ begin
 
      if not Assigned( _NALFs ) then Exit;
 
-     if upNALFs then
-     begin
-          upNALFs := False;
-
-          DrawNALFs;
-     end;
+     if upNALFs then DrawNALFs;
 
      Canvas.DrawBitmap( _BMP, TRectF.Create( 0, 0, _BMP.Width, _BMP.Height ), LocalRect, 1, True );
 end;
@@ -89,28 +84,32 @@ var
 begin
      _BMP.SetSize( NALFs.DegN+1, NALFs.DegN+1 );
      _BMP.Clear( TAlphaColors.Null );  // m > n の領域は透明のまま残る
-     _BMP.Map( TMapAccess.Write, D );
+     if not _BMP.Map( TMapAccess.Write, D ) then Exit;
 
-     TParallel.For( 0, NALFs.DegN, procedure ( N:Integer )
-     var
-        P :PAlphaColor;
-        M :Integer;
-        C :TAlphaColorF;
-     begin
-          P := D.GetScanline( N );
-
-          for M := 0 to N do
+     try
+          TParallel.For( 0, NALFs.DegN, procedure ( N:Integer )
+          var
+             P :PAlphaColor;
+             M :Integer;
+             C :TAlphaColorF;
           begin
-               C.R := Clamp( 0.5 + NALFs[ N, M ] / 4, 0, 1 );
-               C.G := C.R;
-               C.B := C.R;
-               C.A := 1;
+               P := D.GetScanline( N );
 
-               P^ := C.ToAlphaColor;  Inc( P );
-          end;
-     end );
+               for M := 0 to N do
+               begin
+                    C.R := Clamp( 0.5 + NALFs[ N, M ] / 4, 0, 1 );
+                    C.G := C.R;
+                    C.B := C.R;
+                    C.A := 1;
 
-     _BMP.Unmap( D );
+                    P^ := C.ToAlphaColor;  Inc( P );
+               end;
+          end );
+     finally
+          _BMP.Unmap( D );
+     end;
+
+     upNALFs := False;
 end;
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& public
